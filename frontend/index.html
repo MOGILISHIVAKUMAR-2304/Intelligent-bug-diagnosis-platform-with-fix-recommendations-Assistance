@@ -3,22 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Intelligence Bug Diagnosis Platform</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
 
     <h1>Intelligence Bug Diagnosis Platform</h1>
 
-    <p>Submit a bug report for AI-based diagnosis and fix recommendations.</p>
+    <p>
+        Submit a software bug for AI-based diagnosis and fix recommendations.
+    </p>
 
     <form id="bugForm">
-        <label for="title">Bug Title:</label><br>
-        <input type="text" id="title" name="title" required><br><br>
 
-        <label for="description">Bug Description:</label><br>
-        <textarea id="description" name="description" rows="8" required></textarea><br><br>
+        <label for="title">Bug Title:</label>
+        <input type="text" id="title" required>
+
+        <label for="description">Bug Description:</label>
+        <textarea id="description" rows="8" required></textarea>
+
+        <label for="error">Error Message:</label>
+        <textarea id="error" rows="5"></textarea>
+
+        <label for="stackTrace">Stack Trace:</label>
+        <textarea id="stackTrace" rows="8"></textarea>
 
         <button type="submit">Submit Bug</button>
+
     </form>
 
     <p id="result"></p>
