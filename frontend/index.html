@@ -70,6 +70,34 @@
     </form>
 
     <p id="result"></p>
+<script>
+    document.getElementById("bugForm").addEventListener("submit", async function(event) {
+        event.preventDefault();
 
+        const bugReport = {
+            title: document.getElementById("title").value,
+            description: document.getElementById("description").value,
+            error: document.getElementById("error").value,
+            stackTrace: document.getElementById("stackTrace").value
+        };
+
+        try {
+            const response = await fetch("http://127.0.0.1:5000/submit-bug", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(bugReport)
+            });
+
+            const result = await response.json();
+
+            document.getElementById("result").textContent = result.message;
+        } catch (error) {
+            document.getElementById("result").textContent =
+                "Could not connect to the backend.";
+        }
+    });
+</script>
 </body>
 </html>
