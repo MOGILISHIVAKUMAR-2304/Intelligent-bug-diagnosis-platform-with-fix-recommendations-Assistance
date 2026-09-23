@@ -1,0 +1,2 @@
+id,project,title,description,severity,component,resolution
+1,Mozilla,Login button not working,Login button does not respond when clicked,High,Authentication,Fixed login event handler
