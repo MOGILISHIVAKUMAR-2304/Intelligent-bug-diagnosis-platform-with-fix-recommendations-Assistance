@@ -64,6 +64,8 @@
 
         <label for="stackTrace">Stack Trace:</label>
         <textarea id="stackTrace" rows="8"></textarea>
+        <label for="bugFile">Upload Bug Report / Log File:</label>
+<input type="file" id="bugFile">
 
         <button type="submit">Submit Bug</button>
 
@@ -74,20 +76,23 @@
     document.getElementById("bugForm").addEventListener("submit", async function(event) {
         event.preventDefault();
 
-        const bugReport = {
-            title: document.getElementById("title").value,
-            description: document.getElementById("description").value,
-            error: document.getElementById("error").value,
-            stackTrace: document.getElementById("stackTrace").value
-        };
+        const formData = new FormData();
+
+formData.append("title", document.getElementById("title").value);
+formData.append("description", document.getElementById("description").value);
+formData.append("error", document.getElementById("error").value);
+formData.append("stackTrace", document.getElementById("stackTrace").value);
+
+const fileInput = document.getElementById("bugFile");
+
+if (fileInput.files.length > 0) {
+    formData.append("bugFile", fileInput.files[0]);
+}
 
         try {
             const response = await fetch("http://127.0.0.1:5000/submit-bug", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(bugReport)
+                body: formData
             });
 
             const result = await response.json();
