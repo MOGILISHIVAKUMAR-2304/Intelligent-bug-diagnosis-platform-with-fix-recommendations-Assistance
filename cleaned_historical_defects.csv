@@ -1,0 +1,4 @@
+id,project,title,description,severity,component,resolution
+1,Mozilla,Login button not working,Login button does not respond when clicked,High,Authentication,Fixed login event handler
+2,Apache,Server crashes on startup,Application server crashes immediately after startup,High,Server,Fixed configuration issue
+3,Eclipse,Editor freezes while typing,Code editor becomes unresponsive during typing,Medium,Editor,Fixed editor performance issue
